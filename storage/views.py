@@ -21,11 +21,35 @@ class MovieViewSet(viewsets.ModelViewSet):
 class CastViewSet(viewsets.ModelViewSet):
     queryset = Cast.objects.order_by('id')
     serializer_class = CastSerializer
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.IsAuthenticated(),)
+
+        return (permissions.IsAuthenticated(),)
     
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.order_by('id')
     serializer_class = GenreSerializer
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.IsAuthenticated(),)
+
+        return (permissions.IsAuthenticated(),)
     
 class LinkViewSet(viewsets.ModelViewSet):
     queryset = Link.objects.order_by('id')
     serializer_class = LinkSerializer
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.IsAuthenticated(),)
+
+        return (permissions.IsAuthenticated(),)
