@@ -20,7 +20,7 @@ class Link(models.Model):
     url=models.URLField(null=True)
     movie=models.ForeignKey('Movie',null=True,related_name="link")
     
-    def __unicide__(self):
+    def __unicode__(self):
         return self.url
     
 class Genre(models.Model):
