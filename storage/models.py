@@ -12,6 +12,9 @@ class Movie(models.Model):
     screenshot_2=models.URLField(null=True)
     genre=models.ManyToManyField('Genre',null=True)
     cast=models.ManyToManyField('Cast',null=True)
+    
+    def __unicode__(self):
+        return self.name
         
 class Link(models.Model):
     url=models.URLField(null=True)
