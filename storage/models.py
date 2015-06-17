@@ -18,7 +18,10 @@ class Movie(models.Model):
         
 class Link(models.Model):
     url=models.URLField(null=True)
-    movie=models.ForeignKey('Movie',null=True)
+    movie=models.ForeignKey('Movie',null=True,related_name="link")
+    
+    def __unicide__(self):
+        return self.url
     
 class Genre(models.Model):
     name=models.CharField(max_length=40)

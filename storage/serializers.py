@@ -18,7 +18,7 @@ class LinkSerializer(serializers.ModelSerializer):
         fields=('id','url','movie')
         
 class MovieSerializer(serializers.ModelSerializer):
-    link = serializers.StringRelatedField(many=True)
+    link = serializers.StringRelatedField(many=True,read_only=True)
     class Meta:
         model=Movie
         fields=('id','name','cast','link','genre','rating','screenshot_1','screenshot_2','cover_image','size_mb',)
