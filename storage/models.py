@@ -26,6 +26,9 @@ class Link(models.Model):
 class Genre(models.Model):
     name=models.CharField(max_length=40)
     
+    def __unicode__(self):
+        return self.name
+    
     
 class Cast(models.Model):
     name=models.CharField(max_length=40)

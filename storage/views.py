@@ -9,6 +9,15 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.order_by('id')
     serializer_class = MovieSerializer
     
+    def get_queryset(self):
+        result=Movie.objects.all()
+        movie_name=self.request.query_params.get('name',None)
+        if movie_name:
+            return result.filter(name__icontains=movie_name)
+        
+        return result
+    
+    
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
